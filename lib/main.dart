@@ -35,70 +35,99 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Container(
         decoration: const BoxDecoration(
-          gradient: LinearGradient(
-              colors: [Color.fromARGB(255, 198, 205, 241), Colors.white],
-              begin: Alignment.bottomLeft,
-              end: Alignment.topRight),
-        ),
+            gradient: RadialGradient(
+          colors: [
+            Color.fromARGB(255, 116, 135, 235),
+            Color.fromARGB(255, 246, 246, 246),
+          ],
+          center: Alignment(-0.4, 0.8), // Center of the gradient
+          radius: 0.5, // Radius of the gradient
+        )),
         child: Scaffold(
-          backgroundColor: Colors.transparent,
+          backgroundColor: Colors.grey.shade200.withValues(alpha: 0.5),
           body: Center(
             // Center is a layout widget. It takes a single child and positions it
             // in the middle of the parent.
             child: Padding(
               padding: const EdgeInsets.all(25.0),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  const SizedBox(height: 20),
+                  const Spacer(
+                    flex: 3,
+                  ),
 
                   // Title
                   const Text(
                     "Sign In to recharge Direct",
                     style: TextStyle(
-                      fontSize: 20,
+                      fontSize: 28,
                       fontWeight: FontWeight.bold,
                       color: Colors.black87,
                     ),
                     textAlign: TextAlign.center,
                   ),
 
-                  const SizedBox(height: 30),
+                  const Spacer(
+                    flex: 1,
+                  ),
 
                   // Email TextField
-                  TextField(
-                    decoration: InputDecoration(
-                      hintText: "Enter Email",
-                      prefixIcon: const Icon(Icons.email_outlined),
-                      suffixIcon: const Icon(Icons.close),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
-                        borderSide: BorderSide.none,
+                  Column(
+                    children: [
+                      TextField(
+                        decoration: InputDecoration(
+                          hintText: "Enter Email",
+                          suffixIcon: const Icon(Icons.close),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12),
+                            borderSide: BorderSide.none,
+                          ),
+                          filled: true,
+                          fillColor: Colors.white,
+                        ),
                       ),
-                      filled: true,
-                      fillColor: Colors.white,
-                    ),
+                      const SizedBox(height: 16),
+
+                      // Password TextField
+                      Container(
+                        decoration: BoxDecoration(
+                          color:
+                              Colors.white, // Background color of the TextField
+                          borderRadius: BorderRadius.circular(
+                              12), // Match the TextField's borderRadius
+                          boxShadow: [
+                            BoxShadow(
+                              color: const Color.fromARGB(255, 74, 72, 72)
+                                  .withOpacity(0.1), // Shadow color
+                              blurRadius: 6, // Spread of the shadow
+                              offset: Offset(
+                                  0, 3), // Horizontal and vertical offset
+                            ),
+                          ],
+                        ),
+                        child: TextField(
+                          obscureText: true,
+                          decoration: InputDecoration(
+                            hintText: "Password",
+                            suffixIcon:
+                                const Icon(Icons.visibility_off_outlined),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(12),
+                              borderSide: BorderSide.none,
+                            ),
+                            filled: true,
+                            fillColor: Colors
+                                .white, // Ensure the same color is used here
+                          ),
+                        ),
+                      )
+                    ],
                   ),
 
-                  const SizedBox(height: 16),
-
-                  // Password TextField
-                  TextField(
-                    obscureText: true,
-                    decoration: InputDecoration(
-                      hintText: "Password",
-                      prefixIcon: const Icon(Icons.lock_outline),
-                      suffixIcon: const Icon(Icons.visibility_off_outlined),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
-                        borderSide: BorderSide.none,
-                      ),
-                      filled: true,
-                      fillColor: Colors.white,
-                    ),
+                  const Spacer(
+                    flex: 2,
                   ),
-
-                  const SizedBox(height: 10),
                   // Sign In Button
                   ElevatedButton(
                     onPressed: () {},
@@ -107,7 +136,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12),
                       ),
-                      backgroundColor: Colors.blue,
+                      backgroundColor: const Color.fromARGB(255, 68, 97, 242),
                     ),
                     child: const Center(
                       child: Text(
@@ -115,6 +144,9 @@ class _MyHomePageState extends State<MyHomePage> {
                         style: TextStyle(fontSize: 16, color: Colors.white),
                       ),
                     ),
+                  ),
+                  const Spacer(
+                    flex: 1,
                   ),
                   const Text(
                     "If you don't have an account, please sign up",
@@ -126,7 +158,10 @@ class _MyHomePageState extends State<MyHomePage> {
                     textAlign: TextAlign.center,
                   ),
 
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 40),
+                  Spacer(
+                    flex: 1,
+                  )
                 ],
               ),
             ),
