@@ -9,11 +9,11 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      darkTheme: FlexThemeData.dark(scheme: FlexScheme.mallardGreen),
+      debugShowCheckedModeBanner: false,
+      darkTheme: FlexThemeData.dark(scheme: FlexScheme.green),
       home: const MainPage(),
     );
   }
@@ -86,21 +86,16 @@ class _MyHomePageState extends State<MyHomePage> {
                         ),
                       ),
                       const SizedBox(height: 16),
-
-                      // Password TextField
                       Container(
                         decoration: BoxDecoration(
-                          color:
-                              Colors.white, // Background color of the TextField
-                          borderRadius: BorderRadius.circular(
-                              12), // Match the TextField's borderRadius
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(12),
                           boxShadow: [
                             BoxShadow(
                               color: const Color.fromARGB(255, 74, 72, 72)
-                                  .withOpacity(0.1), // Shadow color
-                              blurRadius: 6, // Spread of the shadow
-                              offset: Offset(
-                                  0, 3), // Horizontal and vertical offset
+                                  .withValues(alpha: 0.1),
+                              blurRadius: 6,
+                              offset: const Offset(0, 3),
                             ),
                           ],
                         ),
@@ -157,7 +152,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
 
                   const SizedBox(height: 40),
-                  Spacer(
+                  const Spacer(
                     flex: 1,
                   )
                 ],
