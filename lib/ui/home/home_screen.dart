@@ -24,16 +24,25 @@ class HomeScreen extends StatelessWidget {
                     color: AppColors.primaryText),
               ),
               const SizedBox(height: 16),
-              TextField(
-                decoration: InputDecoration(
-                  prefixIcon: const Icon(Icons.search,
-                      color: AppColors.primaryIconHighlight),
-                  hintText: 'Search',
-                  filled: true,
-                  fillColor: AppColors.secondaryAccent,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8),
-                    borderSide: BorderSide.none,
+              SizedBox(
+                height: 40,
+                child: TextField(
+                  textAlignVertical: const TextAlignVertical(y: 1),
+                  cursorColor: AppColors.primaryText,
+                  decoration: InputDecoration(
+                    prefixIcon: const Icon(
+                      Icons.search,
+                      color: AppColors.primaryIconHighlight,
+                      size: 27,
+                    ),
+                    hintText: 'Search',
+                    hintStyle: const TextStyle(color: AppColors.primaryText),
+                    filled: true,
+                    fillColor: AppColors.secondaryAccent,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15),
+                      borderSide: BorderSide.none,
+                    ),
                   ),
                 ),
               ),
@@ -60,14 +69,36 @@ class HomeScreen extends StatelessWidget {
                 child: ListView(
                   shrinkWrap: true,
                   children: [
-                    TaskDateSection(date: '8 Jul Today'),
-                    TaskDateSection(date: '9 Jul Tomorrow'),
+                    const TaskDateSection(date: '8 Jul Today'),
+                    const TaskDateSection(date: '9 Jul Tomorrow'),
                   ],
                 ),
               ),
             ],
           ),
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: AppColors.background,
+        fixedColor: AppColors.background,
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.calendar_today),
+            label: 'Calendar',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.bar_chart),
+            label: 'History',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Profile',
+          ),
+        ],
       ),
     );
   }
@@ -76,7 +107,7 @@ class HomeScreen extends StatelessWidget {
 class TaskDateSection extends StatelessWidget {
   final String date;
 
-  TaskDateSection({required this.date});
+  const TaskDateSection({super.key, required this.date});
 
   @override
   Widget build(BuildContext context) {
@@ -91,25 +122,25 @@ class TaskDateSection extends StatelessWidget {
               color: AppColors.primaryAccent),
         ),
         const SizedBox(height: 16),
-        TaskRow(
+        const TaskRow(
           time: '9:30 AM',
           duration: '45 min',
           title: 'Task Heading',
           description: 'Task description line 1\nTask description line 2',
         ),
-        TaskRow(
+        const TaskRow(
           time: '9:30 AM',
           duration: '45 min',
           title: 'Task Heading',
           description: 'Task description line 1\nTask description line 2',
         ),
-        TaskRow(
+        const TaskRow(
           time: '9:30 AM',
           duration: '45 min',
           title: 'Task Heading',
           description: 'Task description line 1\nTask description line 2',
         ),
-        TaskRow(
+        const TaskRow(
           time: '9:30 AM',
           duration: '45 min',
           title: 'Task Heading',
@@ -126,7 +157,8 @@ class TaskRow extends StatelessWidget {
   final String title;
   final String description;
 
-  TaskRow({
+  const TaskRow({
+    super.key,
     required this.time,
     required this.duration,
     required this.title,
@@ -154,29 +186,43 @@ class TaskRow extends StatelessWidget {
           ),
           const SizedBox(width: 16),
           Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(title,
-                    style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: AppColors.primaryText)),
-                const SizedBox(height: 4),
-                Text(description,
-                    style: const TextStyle(
-                        fontSize: 14, color: AppColors.primaryText)),
-              ],
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15),
+                color: AppColors.secondaryAccent,
+              ),
+              child: Padding(  
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(title,
+                            style: const TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: AppColors.primaryText)),
+                        const SizedBox(height: 4),
+                        Text(description,
+                            style: const TextStyle(
+                                fontSize: 14, color: AppColors.primaryText)),
+                      ],
+                    ),
+                    IconButton(
+                      icon: const Icon(
+                        Icons.more_vert,
+                        color: AppColors.primaryText,
+                      ),
+                      onPressed: () {
+                        // Handle more button pressed
+                      },
+                    ),
+                  ],
+                ),
+              ),
             ),
-          ),
-          IconButton(
-            icon: const Icon(
-              Icons.more_vert,
-              color: AppColors.primaryText,
-            ),
-            onPressed: () {
-              // Handle more button pressed
-            },
           ),
         ],
       ),

@@ -14,13 +14,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
         statusBarColor: AppColors.background,
         statusBarIconBrightness: Brightness.light));
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       darkTheme: FlexThemeData.dark(scheme: FlexScheme.green),
-      home: HomeScreen(),
+      home: const HomeScreen(),
     );
   }
 }
