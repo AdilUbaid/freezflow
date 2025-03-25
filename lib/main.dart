@@ -1,7 +1,9 @@
 import 'package:flex_color_scheme/flex_color_scheme.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:freezflow/ui/home/color.dart';
+import 'package:freezflow/theme/app_theme.dart';
+// import 'package:freezflow/ui/home/color.dart';
 import 'package:freezflow/ui/home/home_screen.dart';
 import 'package:freezflow/ui/main_page.dart';
 
@@ -14,12 +16,19 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-        statusBarColor: AppColors.background,
-        statusBarIconBrightness: Brightness.light));
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+          // statusBarColor: AppColors.background,
+          // statusBarIconBrightness: Brightness.light,
+          ),
+    );
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      darkTheme: FlexThemeData.dark(scheme: FlexScheme.green),
+      theme: AppTheme.dark,
+      // The Mandy red, dark theme.
+      darkTheme: AppTheme.dark,
+      // Use dark or light theme based on system setting.
+      themeMode: ThemeMode.system,
       home: const HomeScreen(),
     );
   }

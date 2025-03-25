@@ -1,5 +1,7 @@
+import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
-import 'package:freezflow/ui/home/color.dart';
+import 'package:freezflow/theme/app_theme.dart';
+// import 'package:freezflow/ui/home/color.dart';
 import 'package:intl/intl.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -9,7 +11,7 @@ class HomeScreen extends StatelessWidget {
     String formattedDate = DateFormat('dd MMM yyyy').format(DateTime.now());
 
     return Scaffold(
-      backgroundColor: AppColors.background,
+      // backgroundColor: AppColors.background,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -19,26 +21,28 @@ class HomeScreen extends StatelessWidget {
               Text(
                 '$formattedDate today',
                 style: const TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: AppColors.primaryText),
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  // color: AppColors.primaryText,
+                ),
               ),
               const SizedBox(height: 16),
               SizedBox(
                 height: 40,
                 child: TextField(
                   textAlignVertical: const TextAlignVertical(y: 1),
-                  cursorColor: AppColors.primaryText,
+                  // cursorColor: AppColors.primaryText,
                   decoration: InputDecoration(
                     prefixIcon: const Icon(
                       Icons.search,
-                      color: AppColors.primaryIconHighlight,
+                      // color: AppColors.primaryIconHighlight,
                       size: 27,
                     ),
                     hintText: 'Search',
-                    hintStyle: const TextStyle(color: AppColors.primaryText),
+                    hintStyle:
+                        const TextStyle(/*color: AppColors.primaryText*/),
                     filled: true,
-                    fillColor: AppColors.secondaryAccent,
+                    // fillColor: AppColors.secondaryAccent,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
                       borderSide: BorderSide.none,
@@ -53,13 +57,21 @@ class HomeScreen extends StatelessWidget {
                   for (var day in ['S', 'M', 'T', 'W', 'T', 'F', 'S'])
                     Column(
                       children: [
-                        Text(day,
-                            style: const TextStyle(
-                                fontSize: 18, color: AppColors.primaryText)),
+                        Text(
+                          day,
+                          style: const TextStyle(
+                            fontSize: 18,
+                            // color: AppColors.primaryText,
+                          ),
+                        ),
                         const SizedBox(height: 8),
-                        const Text('07',
-                            style: TextStyle(
-                                fontSize: 16, color: AppColors.primaryText)),
+                        const Text(
+                          '07',
+                          style: TextStyle(
+                            fontSize: 16,
+                            // color: AppColors.primaryText,
+                          ),
+                        ),
                       ],
                     ),
                 ],
@@ -79,8 +91,8 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: AppColors.background,
-        fixedColor: AppColors.background,
+        // backgroundColor:
+        // fixedColor: AppColors.background,
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
@@ -116,10 +128,11 @@ class TaskDateSection extends StatelessWidget {
       children: [
         Text(
           date,
-          style: const TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              color: AppColors.primaryAccent),
+          style: TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+            color: AppTheme.dark.colorScheme.secondary,
+          ),
         ),
         const SizedBox(height: 16),
         const TaskRow(
@@ -175,13 +188,21 @@ class TaskRow extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(time,
-                  style: const TextStyle(
-                      fontSize: 16, color: AppColors.secondaryText)),
+              Text(
+                time,
+                style: const TextStyle(
+                  fontSize: 16,
+                  // color: AppColors.secondaryText,
+                ),
+              ),
               const SizedBox(height: 4),
-              Text(duration,
-                  style: const TextStyle(
-                      fontSize: 14, color: AppColors.primaryText)),
+              Text(
+                duration,
+                style: const TextStyle(
+                  fontSize: 14,
+                  // color: AppColors.primaryText,
+                ),
+              ),
             ],
           ),
           const SizedBox(width: 16),
@@ -189,9 +210,9 @@ class TaskRow extends StatelessWidget {
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
-                color: AppColors.secondaryAccent,
+                // color: AppColors.secondaryAccent,
               ),
-              child: Padding(  
+              child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -199,21 +220,28 @@ class TaskRow extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(title,
-                            style: const TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                                color: AppColors.primaryText)),
+                        Text(
+                          title,
+                          style: const TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            // color: AppColors.primaryText,
+                          ),
+                        ),
                         const SizedBox(height: 4),
-                        Text(description,
-                            style: const TextStyle(
-                                fontSize: 14, color: AppColors.primaryText)),
+                        Text(
+                          description,
+                          style: const TextStyle(
+                            fontSize: 14,
+                            // color: AppColors.primaryText,
+                          ),
+                        ),
                       ],
                     ),
                     IconButton(
                       icon: const Icon(
                         Icons.more_vert,
-                        color: AppColors.primaryText,
+                        // color: AppColors.primaryText,
                       ),
                       onPressed: () {
                         // Handle more button pressed

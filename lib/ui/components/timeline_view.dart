@@ -63,7 +63,9 @@ class TimelineView extends StatelessWidget {
               ),
             ),
             todayHighlightStyle: TodayHighlightStyle.withBackground,
-            todayHighlightColor: colorScheme.primaryContainer.withValues(alpha:0.3)),timeLineProps: const EasyTimeLineProps(separatorPadding: 16),
+            todayHighlightColor:
+                colorScheme.primaryContainer.withValues(alpha: 0.3)),
+        timeLineProps: const EasyTimeLineProps(separatorPadding: 16),
       ),
     );
   }
