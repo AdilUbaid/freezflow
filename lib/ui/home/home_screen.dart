@@ -1,4 +1,3 @@
-import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:freezflow/theme/app_theme.dart';
 // import 'package:freezflow/ui/home/color.dart';
@@ -18,13 +17,38 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                '$formattedDate today',
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  // color: AppColors.primaryText,
-                ),
+              // Text(
+              //   '$formattedDate today',
+              //   style: const TextStyle(
+              //     fontSize: 18,
+              //     fontWeight: FontWeight.bold,
+              //     // color: AppColors.primaryText,
+              //   ),
+              // ),
+
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      Text(
+                        "24",
+                        style: TextStyle(fontSize: 34),
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [Text("Wed"), Text("Jan 2025")],
+                      )
+                    ],
+                  ),
+                  Text(
+                    "Today",
+                    style: TextStyle(fontSize: 24),
+                  )
+                ],
               ),
               const SizedBox(height: 16),
               SizedBox(
@@ -80,9 +104,9 @@ class HomeScreen extends StatelessWidget {
               Expanded(
                 child: ListView(
                   shrinkWrap: true,
-                  children: [
-                    const TaskDateSection(date: '8 Jul Today'),
-                    const TaskDateSection(date: '9 Jul Tomorrow'),
+                  children: const [
+                    TaskDateSection(date: '8 Jul Today'),
+                    TaskDateSection(date: '9 Jul Tomorrow'),
                   ],
                 ),
               ),
